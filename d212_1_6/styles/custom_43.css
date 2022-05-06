@@ -1,0 +1,128 @@
+<style>
+
+body {
+    counter-reset: part-counter table-counter figure-counter;
+}
+
+h1 {
+    margin: 0 0 0 0;
+    font-family: 'Times New Roman', serif;
+    font-size: 40px;
+    padding: 5px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: #0000ff;
+}
+
+.part {
+    counter-increment: part-counter;
+    counter-reset: table-counter figure-counter;
+    margin: 0 0 0 0;
+    font-family: 'Impact';
+    font-size: 20px;
+    padding: 5px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: #000000;
+    background: inherit;
+}
+
+
+h2 {
+    margin: 0 0 0 0;
+    font-family: 'Times New Roman', serif;
+    font-size: 36px;
+    padding: 5px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: #0000ff;
+    background: inherit;
+
+}
+
+h3 {
+    background: #E6EFFA;
+    font-family: 'Impact';
+    font-size: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 5px 0;
+
+}
+
+.title {
+    text-align: center; 
+    line-height: 48px;
+    font-size: 20px; 
+}
+
+.quote {
+    padding: 10px;
+    border: 1px groove gray;
+    background-color: rgb(202, 197, 198);
+}
+
+.impact {
+    font-family: 'Courier New';
+    font-size: 18px; 
+    line-height: 24px;
+}
+
+.impact:before {
+    content: attr(data-hdr)". ";
+    font-family: 'Impact';
+}
+    
+.table {
+    counter-increment: table-counter;
+    font-family: 'Courier New';
+    font-size: 18px; 
+    line-height: 24px;
+}
+    
+.figure {
+    counter-increment: figure-counter;
+    font-family: 'Courier New';
+    font-size: 18px; 
+    line-height: 24px;
+}
+
+    
+.step {
+    font-family: 'Courier New';
+    font-size: 18px; 
+    line-height: 24px;
+    color: #000000;
+}
+
+
+p {
+    font-family: 'Courier New';
+    font-size: 18px; 
+    color: #000000;
+    line-height: 24px;
+}
+
+ul.a {
+    list-style-position: outside;
+    list-style-type: upper-alpha;
+    line-height: 2.0;
+  }
+
+.apa {
+    padding-left: 4em;
+    text-indent: -4em;
+    background: powderblue;
+    font-size: 12px;
+    line-height: 2.0;
+}
+
+
+.tick-mark {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
+
+</style>
