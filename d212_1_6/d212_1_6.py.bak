@@ -274,3 +274,89 @@ fig.savefig("figures/fig_2", dpi=150)
 'Optimum: ({}, {:.3f})'.format(knee.elbow, sse[knee.elbow-1])
 
 Out[]: 'Optimum: (4, 5326.264)'
+
+
+
+# impact of seeds on distinct clusters
+
+# Import random class
+from numpy import random
+
+# Initialize seed
+random.seed(0)
+
+# Run kmeans clustering
+cluster_centers, distortion = kmeans(comic_con[['x_scaled', 'y_scaled']], 2)
+comic_con['cluster_labels'], distortion_list = vq(comic_con[['x_scaled', 'y_scaled']], cluster_centers)
+
+# Plot the scatterplot
+sns.scatterplot(x='x_scaled', y='y_scaled', 
+                hue='cluster_labels', data = comic_con)
+plt.show()
+
+
+
+
+# find number of clusters using elbow, adapted code (Arvai, 2022)
+M = df_standardized[['TEN','MCH']]
+sse = [] # list of SSE values for each k
+for k in range(1, 10):
+    kmeans = KMeans(n_clusters=k, random_state=10)
+    kmeans.fit(M)
+    sse.append(kmeans.inertia_)
+fig, ax = plt.subplots(figsize =(7, 5))
+knee = KneeLocator(range(1, 10), sse, curve="convex", direction="decreasing")
+plt.plot(range(1,10), sse)
+plt.xticks(range(1,10))
+plt.xlabel("Number of Clusters")
+plt.ylabel("SSE")
+plt.title("Elbow Method")
+plt.axvline(x=knee.elbow, color='green', ls=':', lw=2,)
+fig.savefig("figures/fig_2a", dpi=150)
+# optimum point on knee plot
+print('Optimum: ({}, {:.3f})'.format(knee.elbow, sse[knee.elbow-1]))
+
+
+# find number of clusters using silhouette method, adapted code (Arvai, 2022)
+silhouette_coefficients = []
+for k in range(2, 11):
+    kmeans = KMeans(n_clusters=k, random_state=10)
+    kmeans.fit(M)
+    score = silhouette_score(M, kmeans.labels_)
+    silhouette_coefficients.append(score)
+plt.style.use("fivethirtyeight")
+plt.plot(range(2, 11), silhouette_coefficients)
+plt.xticks(range(2, 11))
+plt.title("Silhouette Method")
+plt.xlabel("Number of Clusters")
+plt.ylabel("Silhouette Coefficient")
+ymax = np.amax(silhouette_coefficients)
+print('Max element : ', ymax)
+result = np.where(silhouette_coefficients == np.amax(silhouette_coefficients))
+print('Returned tuple of arrays :', result)
+print('List of Indices of maximum element :', result[0])
+plt.axhline(y=ymax, color='red', ls=':', lw=2,)
+fig.savefig("figures/fig_2b", dpi=150)
+
+
+# describe numerical data - highlight small std
+df = df_numerical.describe().round(3).T
+def highlight_cells(val, color_if_true):
+    color = color_if_true if val <= 3  else ''
+    return 'background-color: {}'.format(color)
+df[['mean','std','min','max']].style.applymap(highlight_cells, 
+    color_if_true='yellow', subset=['std'])
+
+
+# describe standardized data
+scaler = StandardScaler()
+scaled_features = scaler.fit_transform(df_final.values)
+df_standardized = pd.DataFrame(scaled_features,
+        index=df_final.index, 
+      columns=df_final.columns)
+df = df_standardized.describe().round(2).T
+def highlight_cells(val, color_if_true):
+    color = color_if_true if val >= 3  else ''
+    return 'background-color: {}'.format(color)
+df[['mean','std','min','max']].style.applymap(highlight_cells, 
+    color_if_true='yellow', subset=['max'])

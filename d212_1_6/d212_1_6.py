@@ -360,3 +360,15 @@ def highlight_cells(val, color_if_true):
     return 'background-color: {}'.format(color)
 df[['mean','std','min','max']].style.applymap(highlight_cells, 
     color_if_true='yellow', subset=['max'])
+    
+    
+# adapted from code:
+#https://towardsdatascience.com/silhouette-coefficient-validating-clustering-techniques-e976bb81d10c
+from sklearn.metrics import silhouette_score
+M = df_standardized[['TEN','MCH']]
+for i in range(2,8):
+    KMean= KMeans(n_clusters=i, random_state=10)
+    KMean.fit(M)
+    cluster_labels=KMean.predict(M)
+    silhouette_avg = silhouette_score(M, cluster_labels)
+    print('Silhouette score (n={}) is {:.8f}'.format(i,silhouette_avg  ))
