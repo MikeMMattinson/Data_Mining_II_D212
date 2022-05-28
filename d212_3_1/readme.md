@@ -7,4 +7,4 @@ Keywords: Data Mining. Market Basket Analysis. Association Rules and Lift Analys
 
 
 
-<img src="figures\metrics.PNG" alt="metrics">
+<img src="figures\metrics.png" alt="metrics">
