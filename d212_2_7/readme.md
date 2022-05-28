@@ -8,7 +8,7 @@ Keywords: Telecom. Churn. Data Mining. Dimension Reduction. PCA. Principal Compo
 
 
 
-<img src="figures\figure_2.PNG" alt="figure_2">
+<img src="figures\figure_2.jpg" alt="figure_2">
 
 
-<img src="figures\figure_3.PNG" alt="figure_3">
+<img src="figures\figure_3.jpg" alt="figure_3">
