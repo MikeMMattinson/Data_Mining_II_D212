@@ -1,6 +1,13 @@
+<style>
+body {background-color: powderblue;}
+h1   {color: blue;}
+p    {color: red;}
+.abstract {color: black;}
+</style>
+
 # WGU D212 Task 1 Rev 6 - Mattinson
 
-<div style="line-height:24px; align=center; font-family='Times New Roman'"><b>Abstract</b></div>
+<div class="abstract"><b>Abstract</b></div>
 Telecom customer data is broken down into groups with similar attributes using K-means clustering analysis. Data source: Wgu.edu Telecom Churn data (N: 10,000). The focus is on lost customers (n: 2,650) defined where the ‘Churn’ variable is ‘Yes’. 
 
 <i>Keywords</i>: Telecom. Churn. Data Mining. K-means Clustering.
