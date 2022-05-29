@@ -12,4 +12,4 @@ Keywords: Telecom. Churn. Data Mining. K-means Clustering.
 <img src="figures\fig_3_k_2.png" alt="figure_3">
 
 
-<img src="figures\figure_2a.png" alt="figure_2">
+<img src="figures\fig_2a.png" alt="figure_2">
